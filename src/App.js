@@ -1,9 +1,12 @@
 import logo from './logo.svg';
-import './App.css';
-
+import './App.scss';
+import Header from './components/header/headerComponent';
+import SignIn from './pages/signIn/signInComponent'
 function App() {
   return (
-    <div className="App">
+    <div className="react-node-store-container">
+      <Header/>
+      <SignIn/>
        My first page
     </div>
   );

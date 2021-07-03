@@ -1,0 +1,22 @@
+$primary-color:#0caa0c;
+.signInHeading{
+    font-size: 2.2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    color: $primary-color;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.signIn-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    border: 2px solid $primary-color;
+    margin: 1%;
+   
+}

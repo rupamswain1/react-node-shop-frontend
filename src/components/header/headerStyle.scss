@@ -1,0 +1,82 @@
+@keyframes myAnim {
+    0% {
+      animation-timing-function: ease-out;
+      transform: scale(1);
+      transform-origin: center center;
+    }
+  
+    10% {
+      animation-timing-function: ease-in;
+      transform: scale(0.91);
+    }
+  
+    17% {
+      animation-timing-function: ease-out;
+      transform: scale(0.98);
+    }
+  
+    33% {
+      animation-timing-function: ease-in;
+      transform: scale(0.87);
+    }
+  
+    45% {
+      animation-timing-function: ease-out;
+      transform: scale(1);
+    }
+  }
+
+ $text-color:white;
+.navBarContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items: baseline;
+    border: 1px solid rgb(10, 49, 3);
+    background: rgb(1,59,41);
+    background: linear-gradient(90deg, #0caa0c 0%, #50e449 100%);
+    width:100%;
+    height:10%;
+    .ecommHome{
+        //order:-1;
+        flex-basis: auto;
+       // align-self: auto;
+        font-size: 100%;
+        color:$text-color;
+       // width:11%;
+        //height:40%;
+        border:2px solid white;
+        font-weight: bold;
+        padding: 1%;
+        margin-bottom: 1%;
+        margin-left: 1%;
+        &:hover{
+            cursor: pointer;
+            animation: myAnim 2s ease 0s 1 normal forwards;
+        }
+    }
+    .searchBoxContainer{
+        flex-shrink: 5;
+    }
+    .headerOptions{
+        display: flex;
+        justify-content: flex-end;
+        width: 20%;
+         padding-right: 2%;
+        .option{
+            list-style-type: none; /* Remove bullets */
+            padding: 0; /* Remove padding */
+            margin: 0; /* Remove margins */
+            padding: 2%;
+            color: $text-color;
+            font-weight: bold;
+            border: 2px solid white;
+
+            &:hover{
+                cursor: pointer;
+                animation: myAnim 2s ease 0s 1 normal forwards;
+            }
+        }
+    }
+}
