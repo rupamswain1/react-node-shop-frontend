@@ -1,0 +1,35 @@
+$primary-color:#0caa0c;
+@mixin shrinkLable {
+    top:0.3vh;
+    font-size: 80%;
+    background-color: white;
+    padding: 0.3%;
+}
+.inputFieldContainer{
+    position: relative;
+    input[class*=inputField]{
+       // outline: none;
+       position:absolute;
+        border: 2px solid $primary-color;
+        border-radius: 5px;
+        padding:5%;
+        margin: 5% 0;
+        width:30vw;
+        &:focus ~ label[class^='inputField'] {
+            @include shrinkLable();
+        }
+    }
+    label[class*=inputFieldLabel]{
+        position: absolute;
+        color: $primary-color;
+        top:2.5vh;
+        left:0.5vw;
+        transition: 0.3s ease all;
+        &:hover{
+            cursor: text;
+        }
+    }
+    label[class*='shrink']{
+        @include shrinkLable();
+    }
+}
