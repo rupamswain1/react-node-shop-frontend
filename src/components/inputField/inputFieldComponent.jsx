@@ -1,7 +1,7 @@
 import React from 'react';
 import './inputFieldStyle.scss'
 class InputField extends React.Component{
-    //props required: name,value,type,enabled,errorMsg
+    //props required: name,value,type,enabled,errorMsg,placeHolder
     render(){
         
        //console.log(this.props)

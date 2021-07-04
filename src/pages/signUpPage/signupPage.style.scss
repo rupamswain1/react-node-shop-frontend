@@ -1,0 +1,56 @@
+$primary-color:#0caa0c;
+.signUpPage-container{
+    position: relative;
+    //border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    width:80vw;
+    margin:1%;
+    left:10vw;
+    .signUpHeader{
+        color: $primary-color;
+        font-size: 2.2em;
+        font-weight: bold;
+        text-decoration: underline;
+        align-self:center ;
+    }
+    .signUpInputFieldContaine{
+        border: 2px solid $primary-color;
+        border-radius: 10px;
+        width: 60vw;
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
+        .signUpNameField{
+            align-self: center;
+        }
+    }
+    .addressHeaderSignUp{
+        color: $primary-color;
+        font-size: 1.1em;
+        font-weight: bold;
+        text-decoration: underline;
+        align-self:center ;
+    }
+    .SignUpaddressBox{
+        border: 1px solid $primary-color;
+        border-radius: 10px;
+        width: 50vw;
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
+    }
+    .signUpSubmitButton{
+        align-self: center;
+        margin: 2%;
+    }
+}

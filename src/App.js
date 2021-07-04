@@ -1,12 +1,12 @@
 import logo from './logo.svg';
 import './App.scss';
 import Header from './components/header/headerComponent';
-import SignIn from './pages/signIn/signInComponent'
+import SignUpPage from './pages/signUpPage/signUpPage.component';
 function App() {
   return (
     <div className="react-node-store-container">
       <Header/>
-      <SignIn/>
+      <SignUpPage/>
        My first page
     </div>
   );

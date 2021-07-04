@@ -1,2 +1,2 @@
-const re=new RegExp(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/);
-console.log(re.test("abcabcin.in"))
+const re=new RegExp(/^[A-Za-z]+$/);
+console.log(re.test("122asdasd"))
