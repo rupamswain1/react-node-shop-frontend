@@ -1,20 +1,25 @@
 $primary-color:#0caa0c;
+$error-color:red;
 @mixin shrinkLable {
     top:0.3vh;
-    font-size: 80%;
+    font-size: 0.8rem;
     background-color: white;
     padding: 0.3%;
 }
 .inputFieldContainer{
     position: relative;
+    height:10vh;
+    display: block;
+   // border:3px solid black;
     input[class*=inputField]{
-       // outline: none;
-       position:absolute;
+        outline: none;
+       position:relative;
         border: 2px solid $primary-color;
         border-radius: 5px;
-        padding:5%;
-        margin: 5% 0;
+        padding:2%;
+        margin: 2.5% 0;
         width:30vw;
+        
         &:focus ~ label[class^='inputField'] {
             @include shrinkLable();
         }
@@ -29,7 +34,22 @@ $primary-color:#0caa0c;
             cursor: text;
         }
     }
+    .errorMessageForInput{
+        position: relative;
+        color: $error-color;
+        font-size: 80%;
+        top:-1vh;
+        height: 5vh;
+        
+    }
     label[class*='shrink']{
         @include shrinkLable();
     }
+    input[class*='error']{
+        border:2px solid $error-color;
+    }
+    label[class*='error']{
+        color: $error-color;
+    }
+  
 }

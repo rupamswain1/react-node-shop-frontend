@@ -11,6 +11,7 @@ $primary-color:#0caa0c;
     text-decoration: underline;
 }
 .signIn-container{
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,5 +19,14 @@ $primary-color:#0caa0c;
     align-content: center;
     border: 2px solid $primary-color;
     margin: 1%;
-   
+    border-radius: 10px;
+    width: 60vw;
+    left:20vw;
+    .reset-forgot-password{
+        align-self: center;
+    }
+    .signup-link{
+        align-self: center;
+        margin-bottom: 1vh;
+    }
 }

@@ -1,0 +1,29 @@
+$primary-color:#0caa0c;
+.primaryButtonConrainer{
+    display:flex;
+    position: relative;
+    height:5vh;
+    //width: 30vw;
+    button[class^=primaryButton]{
+        background-color: $primary-color;
+        color: white;
+        border-radius: 5px;
+        border:1px solid black;
+        font-size: 1.5rem;
+        font-weight: bold;
+        width: 31.5vw;
+        &:hover{
+            background-color: white;
+            color: $primary-color;
+            border:2px solid $primary-color;
+            transition: 0.3s ease-out;
+            cursor: pointer;
+        }
+        &:focus {
+            background-color: white;
+            color: $primary-color;
+            border:2px solid $primary-color;
+            transition: 0.3s ease-out;
+        }
+    }
+}

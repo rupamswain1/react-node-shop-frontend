@@ -1,32 +1,25 @@
 import React from 'react';
 import './inputFieldStyle.scss'
 class InputField extends React.Component{
-    constructor(props){
-        super(props);
-        this.state={
-            name:this.props.name,
-            value:this.props.value,
-            type:this.props.type,
-            enabled:this.props.enabled,
-            onChangehandler:this.props.onChangehandler,
-            placeHolder:this.props.placeHolder
-        }
-    }
+    //props required: name,value,type,enabled,errorMsg
     render(){
-        console.log(this.state.value)
+        
+       //console.log(this.props)
         return(
             <div className="inputFieldContainer">
-                <input className={`inputField-${this.state.name}`}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
-                    value={this.state.value} 
-                    id={this.state.name} 
-                    name={this.state.name} 
-                    type={this.state.type} 
-                    disabled={this.state.enabled} 
-                    onChange={e=>this.state.onChangehandler(e.target)}
+                <input className={`inputField-${this.props.name}-${this.props.errorMsg?'error':''}`}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+                    value={this.props.value} 
+                    id={this.props.name} 
+                    name={this.props.name} 
+                    type={this.props.type} 
+                    disabled={!this.props.enabled} 
+                    onChange={e=>this.props.onChangehandler(e.target)}
                 />
-                <label className={`inputFieldLabel-${this.state.value?'shrink':''}`} onClick={e=>document.getElementById(this.state.name).focus()} for={`inputField-${this.state.name}`}>
-                    {this.state.placeHolder}
+                <label className={`inputFieldLabel-${this.props.value?'shrink':''}-${this.props.errorMsg?'error':''}`} onClick={e=>document.getElementById(this.props.name).focus()} htmlFor={`inputField-${this.props.name}`}>
+                    {this.props.placeHolder}
                 </label>
+                {this.props.errorMsg?<div className="errorMessageForInput">{this.props.errorMsg}</div>:''}
+                
             </div>
         );
     };
