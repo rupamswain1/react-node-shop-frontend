@@ -10,8 +10,8 @@ function App() {
       <div className="react-node-store-container">
         <Header/>
         <Switch>
-            <Route exact path='/store/login' component={SignIn}/>
-            <Route exact path='/store/signUp' component={SignUpPage}/>
+            <Route exact path='/seller/login' component={SignIn}/>
+            <Route exact path='/seller/signUp' component={SignUpPage}/>
         </Switch>
       </div>
     </BrowserRouter>

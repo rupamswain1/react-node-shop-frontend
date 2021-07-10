@@ -1,7 +1,9 @@
 import React,{useState,useEffect} from 'react'
 
 import InputField from '../../components/inputField/inputFieldComponent';
-import PrimaryButton from '../../components/primaryButton/primaryButton.component'
+import PrimaryButton from '../../components/primaryButton/primaryButton.component';
+import {sellerSignup} from '../../api/signup';
+import {useLocation,useHistory} from 'react-router-dom';
 
 import './signupPage.style.scss';
 
@@ -18,6 +20,8 @@ const SignUpPage=()=>{
     const [city,setCity]=useState('');
     const [state1,setState1]=useState('');
     const [errorMsg,setErrorMsg]=useState({a:'abc'});
+    const path=useLocation().pathname.split('/');
+    const history=useHistory();
     const onChangehandler=(e)=>{
         // eslint-disable-next-line default-case
         switch (e.name){
@@ -54,8 +58,9 @@ const SignUpPage=()=>{
         }
     }
 
-    const submitHandler=(event)=>{
+    const submitHandler= async (event)=>{
         event.preventDefault();
+        
         const err={};
         const re=new RegExp(/^[A-Za-z]+$/)
         if(!re.test(fullName) || fullName.length<=0){
@@ -87,13 +92,13 @@ const SignUpPage=()=>{
             delete err.confirmPassword
         }
         if(!(phone.length===10)){
-            err.phoneNumber='Phone Number should be 10 digits long'
+            err.phoneNo='Phone Number should be 10 digits long'
         }
         else{
             delete err.phoneNumber;
         }
         if(houseNo.length<=0){
-            err.houseNo='House Number cannot be left blank';
+            err.houseName='House Number cannot be left blank';
         }
         else{
             delete err.houseNo;
@@ -125,14 +130,34 @@ const SignUpPage=()=>{
 
         // console.log(errorMsg)
         setErrorMsg({...err});
+        
+            if(path[1]==='seller'){
+                const response=await sellerSignup(fullName,email,password,confirmPassword,phone,houseNo,address,pinCode,city,state1)
+                if(response.statusCode!==201){
+                    response.data.forEach((value)=>{
+                        err[value.param]=value.msg;
+                        
+                    })
+                    setErrorMsg({...err});
+                    history.push('/seller/welcome')
+                }
+                else{
+                    
+                }
+                
+            }
+           
+            
+        
     }
 
     useEffect(()=>{
-
+        
     },errorMsg)
-
+    
     return(
         <div className="signUpPage-container">
+            
             <div className="signUpHeader">Sign Up On React Node Ecomm</div>
             <form id="signUpForm" onSubmit={submitHandler}>
                 <div className='signUpInputFieldContaine'>
@@ -192,7 +217,7 @@ const SignUpPage=()=>{
                                     value={phone}
                                     type="number"
                                     enabled={true}
-                                    errorMsg={errorMsg.phoneNumber}
+                                    errorMsg={errorMsg.phoneNo}
                                     placeHolder="Phone Number"
                                     onChangehandler={onChangehandler}
                                 />
@@ -207,7 +232,7 @@ const SignUpPage=()=>{
                                     value={houseNo}
                                     type="text"
                                     enabled={true}
-                                    errorMsg={errorMsg.houseNo}
+                                    errorMsg={errorMsg.houseName}
                                     placeHolder="House Name"
                                     onChangehandler={onChangehandler}
                                 />
