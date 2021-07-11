@@ -1,0 +1,6 @@
+const SellerActionType={
+    UPADTE_SELLER_SESSION:'UPDATE_SELLER_SESSION',
+    UPDATE_SELLER_SIGNOUT:'UPDATE_SELLER_SIGNOUT',
+}
+
+export default SellerActionType;

@@ -4,6 +4,7 @@ import Header from './components/header/headerComponent';
 import SignIn from './pages/signIn/signInComponent';
 import SignUpPage from './pages/signUpPage/signUpPage.component';
 import {BrowserRouter,Route,Switch} from 'react-router-dom';
+
 function App() {
   return (
     <BrowserRouter>
