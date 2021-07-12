@@ -1,4 +1,4 @@
-import {combineReducer} from 'redux';
+import {combineReducers} from 'redux';
 import {persistReducer} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -9,7 +9,7 @@ const persitConfig={
     whiteList:[sellerReducer]
 }
 
-const rootReducer=combineReducer({
+const rootReducer=combineReducers({
     sellerReducer:sellerReducer,
 });
 

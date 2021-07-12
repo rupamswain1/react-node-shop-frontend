@@ -4,6 +4,8 @@ import InputField from '../../components/inputField/inputFieldComponent';
 import PrimaryButton from '../../components/primaryButton/primaryButton.component';
 import {sellerSignup} from '../../api/signup';
 import {useLocation,useHistory} from 'react-router-dom';
+import {useSelector,useDispatch} from 'react-redux';
+import {updateSellerSessio} from '../../redux/sellerReducer/seller.action';
 
 import './signupPage.style.scss';
 
@@ -22,6 +24,8 @@ const SignUpPage=()=>{
     const [errorMsg,setErrorMsg]=useState({a:'abc'});
     const path=useLocation().pathname.split('/');
     const history=useHistory();
+    const dispatch = useDispatch();
+    const sellerData=useSelector(state=>state.sellerReducer);
     const onChangehandler=(e)=>{
         // eslint-disable-next-line default-case
         switch (e.name){
@@ -130,21 +134,27 @@ const SignUpPage=()=>{
 
         // console.log(errorMsg)
         setErrorMsg({...err});
-        
-            if(path[1]==='seller'){
-                const response=await sellerSignup(fullName,email,password,confirmPassword,phone,houseNo,address,pinCode,city,state1)
-                if(response.statusCode!==201){
-                    response.data.forEach((value)=>{
-                        err[value.param]=value.msg;
+        console.log(errorMsg);
+            if(errorMsg){
+                console.log(err.length)
+                if(path[1]==='seller' && err!==undefined){
+                    console.log('submit method')
+                    const response=await sellerSignup(fullName,email,password,confirmPassword,phone,houseNo,address,pinCode,city,state1)
+                    if(response.statusCode!==201){
+                        response.data.forEach((value)=>{
+                            err[value.param]=value.msg;
+                            
+                        })
+                        setErrorMsg({...err});
                         
-                    })
-                    setErrorMsg({...err});
-                    history.push('/seller/welcome')
-                }
-                else{
+                    }
+                    else{
+                        console.log(response)
+                        dispatch(updateSellerSessio('pending','true',fullName,response.token));
+                        history.push('/seller/sellerStatus')
+                    }
                     
                 }
-                
             }
            
             

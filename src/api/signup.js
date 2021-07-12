@@ -19,7 +19,7 @@ export const sellerSignup= async (fullName,email,password,confirmPassword,phone,
     }
     try{
         const res=await axios.post('/seller/signup',postData,header)
-        return ({statusCode:res.status,message:res.data.message});
+        return ({statusCode:res.status,message:res.data.message,token:res.data.token});
     }
     catch(err){
         console.log(err.response)

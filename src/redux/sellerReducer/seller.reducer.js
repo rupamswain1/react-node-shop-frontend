@@ -1,4 +1,4 @@
-import SellerActionType from './seller.action'
+import SellerActionType from './seller.type'
 
 const INITIAL_STATE={
     isAuthenticated:false,
