@@ -2,7 +2,7 @@ import SellerActionType from './seller.type'
 
 const INITIAL_STATE={
     isAuthenticated:false,
-    isVerified:null,
+    isVerified:'pending1221',
     sellerName:null,
     token:null,
 }

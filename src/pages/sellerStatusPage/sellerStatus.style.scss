@@ -1,0 +1,23 @@
+$primary-color:#0caa0c;
+
+.sellerStatusContainer{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    border: 2px solid $primary-color;
+    height:50%;
+    width:50%;
+    align-self: center;
+    margin-top: 5%;
+    left:25%;
+    padding: 2%;
+    border-radius: 10px;
+    text-decoration: underline;
+    text-align: center;
+    font-size: 200%;
+    color: $primary-color;
+}
