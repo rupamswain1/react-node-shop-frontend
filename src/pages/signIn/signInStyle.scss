@@ -10,6 +10,23 @@ $primary-color:#0caa0c;
     font-weight: bold;
     text-decoration: underline;
 }
+.errorMsg{
+    font-size: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    color: blanchedalmond;
+    font-weight: bold;
+    width:60%;
+    border: 2px solid rgb(194, 12, 12);
+    background-color: rgb(230, 134, 134);
+    position: relative;
+    left: 20%;
+    margin: 1%;
+    border-radius: 5px;
+}
 .signIn-container{
     position: relative;
     display: flex;

@@ -1,6 +1,7 @@
 import React from 'react';
 import InputField from '../../components/inputField/inputFieldComponent'
 import PrimaryButton from '../../components/primaryButton/primaryButton.component';
+import {Link} from 'react-router-dom'
 import './signInStyle.scss';
 class SignIn extends React.Component{
     constructor(){
@@ -10,6 +11,7 @@ class SignIn extends React.Component{
             password:"",
             userNameErr:"",
             passwordErr:"",
+            error:"abc"
         }
     }
     
@@ -42,14 +44,14 @@ class SignIn extends React.Component{
         event.preventDefault();
         console.log('form submitted')
     }
-
+    
     render(){
        
         
         return(
             <>
              <div className="signInHeading">Sign In</div>
-            
+            {this.state.error?(<div className='errorMsg'>{this.state.error}</div>):''}
             <div className="signIn-container">
             <form id="loginForm" onSubmit={this.onSubmitHandler}>
                 <div className="signIn-inputFields">
@@ -93,7 +95,8 @@ class SignIn extends React.Component{
                     Reset or forgot password
                 </div>
                 <div className="signup-link">
-                    Do Not have account!!! Sign up Here
+                    Do Not have account!!! <Link to="/seller/signup">Sign up Here</Link>
+
                 </div>
             </div>
             </>
