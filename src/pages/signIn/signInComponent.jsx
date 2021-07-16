@@ -2,6 +2,7 @@ import React from 'react';
 import InputField from '../../components/inputField/inputFieldComponent'
 import PrimaryButton from '../../components/primaryButton/primaryButton.component';
 import {Link} from 'react-router-dom'
+import {signInApi} from '../../api/signIn';
 import './signInStyle.scss';
 class SignIn extends React.Component{
     constructor(){
@@ -11,7 +12,7 @@ class SignIn extends React.Component{
             password:"",
             userNameErr:"",
             passwordErr:"",
-            error:"abc"
+            validationError:""
         }
     }
     
@@ -40,9 +41,23 @@ class SignIn extends React.Component{
        
     }
 
-    onSubmitHandler=(event)=>{
+    onSubmitHandler= async (event)=>{
         event.preventDefault();
-        console.log('form submitted')
+        const response = await signInApi(this.state.userName,this.state.password);
+        console.log(response.data)
+        if(response.status!==200){
+                if(response.data.param==='email'){
+                    this.setState({userNameErr:response.data.msg})
+                }
+                else{
+                    this.setState({validationError:response.data.message})
+                }
+            }
+        else{
+            //set the redux states and navigate user to different page
+        }
+        console.log(this.state.validationError)
+        
     }
     
     render(){
@@ -51,7 +66,7 @@ class SignIn extends React.Component{
         return(
             <>
              <div className="signInHeading">Sign In</div>
-            {this.state.error?(<div className='errorMsg'>{this.state.error}</div>):''}
+            {this.state.validationError?(<div className='errorMsg'>{this.state.validationError}</div>):''}
             <div className="signIn-container">
             <form id="loginForm" onSubmit={this.onSubmitHandler}>
                 <div className="signIn-inputFields">
