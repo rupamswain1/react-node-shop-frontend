@@ -12,7 +12,7 @@ export const signInApi=async (email,password)=>{
     try{
         const res=await axios.post('/seller/login',postData,headerData);
         console.log(res);
-        return {statusCode:res.status,token:res.data.token}
+        return {statusCode:res.status,token:res.data.token,name:res.data.name,verification:res.data.verification}
     }
     catch (e){
         console.log(e.response.data);

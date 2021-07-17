@@ -1,8 +1,11 @@
 import React from 'react';
 import InputField from '../../components/inputField/inputFieldComponent'
 import PrimaryButton from '../../components/primaryButton/primaryButton.component';
+import {connect} from 'react-redux';
+import {updateSellerSessio} from '../../redux/sellerReducer/seller.action'
 import {Link} from 'react-router-dom'
 import {signInApi} from '../../api/signIn';
+import { withRouter } from 'react-router-dom';
 import './signInStyle.scss';
 class SignIn extends React.Component{
     constructor(){
@@ -45,7 +48,7 @@ class SignIn extends React.Component{
         event.preventDefault();
         const response = await signInApi(this.state.userName,this.state.password);
         console.log(response.data)
-        if(response.status!==200){
+        if(response.statusCode!==200){
                 if(response.data.param==='email'){
                     this.setState({userNameErr:response.data.msg})
                 }
@@ -54,7 +57,8 @@ class SignIn extends React.Component{
                 }
             }
         else{
-            //set the redux states and navigate user to different page
+            this.props.logUser(response.verification,true,response.name,response.token);
+            this.props.history.push({pathName:'/seller'})
         }
         console.log(this.state.validationError)
         
@@ -118,5 +122,7 @@ class SignIn extends React.Component{
         );
     }
 }
-
-export default SignIn;
+const mapDispatchToProps=dispatch=>({
+    logUser:(isVerified,isAuthenticated,sellerName,token)=>dispatch(updateSellerSessio(isVerified,isAuthenticated,sellerName,token))
+})
+export default withRouter(connect(null,mapDispatchToProps)(SignIn));
