@@ -1,0 +1,31 @@
+@keyframes myAnim {
+    0% {
+      transform: scale(0.5);
+    }
+    
+    100% {
+      transform: scale(1);
+    }
+  }
+
+.sellerControlPannelCotainer{
+    position:relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border:2px solid black;
+    background: linear-gradient(271deg, #0ba364 0%, #7aecc1 100%);
+    .sellerControlPannelOptions{
+        position:relative;
+        border: 1px solid white;
+        padding: 4px;
+        color:white;
+        &:hover{
+            animation: myAnim 1s ease 0s 1 normal forwards;
+            cursor: pointer;
+            background-color: #228654;
+        }
+       
+    }
+}

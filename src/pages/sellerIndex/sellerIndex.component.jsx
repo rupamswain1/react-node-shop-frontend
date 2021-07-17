@@ -1,7 +1,7 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import SellerStatusPage from '../sellerStatusPage/sellerStatusPage.component';
-
+import SellerControlPannel from '../../components/sellerControlPannel/sellerControlPannel.component';
 const SellerIndex=()=>{
     const {isVerified,isAuthenticated}=useSelector(state=>state.sellerReducer);
     console.log(isVerified)
@@ -10,7 +10,10 @@ const SellerIndex=()=>{
             {
                 (isVerified==='pending')?
                     <SellerStatusPage/>:
-                    <div></div>
+                    <div className='sellerIndexMainPageContainer'>
+                        <SellerControlPannel key='sellerControlPannel'/>
+
+                    </div>
             }
             
         </div>

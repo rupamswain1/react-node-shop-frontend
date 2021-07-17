@@ -36,7 +36,7 @@ class SignIn extends React.Component{
         }
         else if(e.name==='password'){
             this.setState({password: e.value},()=>{
-                this.state.password.length<=6?this.setState({passwordErr: "Password length should be more than 6"}):this.setState({passwordErr: ""})
+                this.state.password.length<6?this.setState({passwordErr: "Password length should be more than 6"}):this.setState({passwordErr: ""})
             })
             
             
@@ -58,7 +58,7 @@ class SignIn extends React.Component{
             }
         else{
             this.props.logUser(response.verification,true,response.name,response.token);
-            this.props.history.push({pathName:'/seller'})
+            this.props.history.push('/seller')
         }
         console.log(this.state.validationError)
         
